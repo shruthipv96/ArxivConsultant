@@ -1,0 +1,21 @@
+flowchart TD
+    A[Start] --> B[Initialize UI]
+    B --> C[Display initial UI components]
+    C --> D[User sets Arxiv search parameters]
+    D --> E[Validate input]
+    E -->|Valid| F[Disable UI, start agent building]
+    F --> G[Build Arxiv agents asynchronously]
+    G --> H[Retrieve papers and tools]
+    H --> I[Display papers in chat]
+    I --> J[Build arxiv_agent]
+    J --> K[Reset arxiv_agent state]
+    K --> L[Enable UI]
+    L --> M[User sends message]
+    M --> N[Process message asynchronously]
+    N --> O[Get response from arxiv_agent]
+    O --> P[Display agent's response]
+    P --> L
+    E -->|Invalid| C
+    L --> Q[User resets UI]
+    Q --> B
+    Q --> R[End]

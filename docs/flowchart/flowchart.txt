@@ -1,0 +1,16 @@
+flowchart TD
+    A[Prompt user to provide search query term and max paper to download] --> B[Initialize ArxivBuilder]
+    B --> C[Execute ArxivBuilder]
+    C --> D{Are tools retrieved?}
+    D -->|Yes| E[Iterate over retrieved papers and print titles]
+    E --> F[Build arxiv_agent using tools obtained]
+    F --> G[Reset the state of arxiv_agent]
+    G --> H[Start interaction loop]
+    H --> I[Prompt user input]
+    I --> J{Input is 'exit'?}
+    J -->|Yes| K[Exit loop]
+    J -->|No| L[Process input with arxiv_agent]
+    L --> M[Print response]
+    M --> I
+    D -->|No| N[Notify user to retry]
+    N --> O[Print exit message]
